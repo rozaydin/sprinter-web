@@ -11,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
+import { AccountComponent } from './account/account.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NavComponent } from './nav/nav.component';
     DashboardComponent,
     LoginComponent,
     MainComponent,
-    NavComponent
+    NavComponent,
+    AccountComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
+import { setContext } from "apollo-link-context";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 import { AppRoutingModule } from "./routing.module";
@@ -39,8 +40,26 @@ import { environment } from '../environments/environment';
 export class AppModule {
 
   constructor(apollo: Apollo, httpLink: HttpLink) {
+
+    const http = httpLink.create({ uri: environment.graphql_url });
+    const auth = setContext((_, { headers }) => {
+      // get the authentication token from local storage if it exists
+      const token = localStorage.getItem('token');
+      const user: any = localStorage.getItem('user');
+      // return the headers to the context so httpLink can read them
+      // in this example we assume headers property exists
+      // and it is an instance of HttpHeaders
+      if (!token || !user) {
+        return {};
+      } else {
+        return {
+          headers: headers.append('Authorization', `${token}&${user.id}`)
+        };
+      }
+    });
+
     apollo.create({
-      link: httpLink.create({ uri: environment.graphql_url }),
+      link: auth.concat(http),
       cache: new InMemoryCache()
     });    
   }

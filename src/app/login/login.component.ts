@@ -3,14 +3,22 @@ import { Router } from "@angular/router";
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-
-//login(email: String!, password: String!): LoginResponse!
-
 const login_mutation = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       result,
-      token
+      token,
+      user {
+        id,
+        name,
+        email,
+        image,
+        role,
+        mobile,
+        teamId,
+        projectId,
+        companyId
+      }
     }
   }
 `;
@@ -33,14 +41,19 @@ export class LoginComponent implements OnInit {
     // login mutation
     this.apollo.mutate({
       mutation: login_mutation,
+
       variables: {
-        email: "admin@admin.com",
-        password: "pass"
+        email: "ridvan.ozaydin@siemens.com",
+        password: "password"
       }
-    }).subscribe((data) => {
-      //
-      console.log(data);
-      this.router.navigateByUrl("/main/dashboard");
+    }).subscribe(({ data }) => {
+      const loginResponse = data.login;
+      // store in session storage
+      if (loginResponse.result == true) {
+        sessionStorage.setItem("token", loginResponse.token);
+        sessionStorage.setItem("user", JSON.stringify(loginResponse.user));
+        this.router.navigateByUrl("/main/dashboard");
+      }
     });
   }
 

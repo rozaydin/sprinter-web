@@ -13,6 +13,8 @@ import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { AccountComponent } from './account/account.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+//
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,9 @@ export class AppModule {
 
   constructor(apollo: Apollo, httpLink: HttpLink) {
     apollo.create({
-      link: httpLink.create({ uri: '[URL]' }),
+      link: httpLink.create({ uri: environment.graphql_url }),
       cache: new InMemoryCache()
-    });
+    });    
   }
 
 }

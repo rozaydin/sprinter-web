@@ -2,14 +2,14 @@
 
     <!-- Username-->
     <div>
-        <input type="text">        
+        <input #username type="text">        
     </div>
 
     <!-- Password -->
     <div>
-        <input type="password">
+        <input #password type="password">
     </div>
 
-    <button (click)="handleLogin($event)">Login</button>
+    <button (click)="handleLogin(username.value, password.value)">Login</button>
   
 </div>

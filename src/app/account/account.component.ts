@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Apollo } from 'apollo-angular';
 
 @Component({
   selector: 'app-account',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
-  constructor() { }
+  public user: any;
+
+  constructor(private router: Router, private apollo: Apollo) { }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem("user"));
   }
 
 }

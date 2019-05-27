@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { setContext } from "apollo-link-context";
@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 //
 import { environment } from '../environments/environment';
+import { ApolloLink, from } from 'apollo-link';
 
 @NgModule({
   declarations: [
@@ -42,26 +43,35 @@ export class AppModule {
   constructor(apollo: Apollo, httpLink: HttpLink) {
 
     const http = httpLink.create({ uri: environment.graphql_url });
-    const auth = setContext((_, { headers }) => {
-      // get the authentication token from local storage if it exists
-      const token = localStorage.getItem('token');
-      const user: any = localStorage.getItem('user');
-      // return the headers to the context so httpLink can read them
-      // in this example we assume headers property exists
-      // and it is an instance of HttpHeaders
-      if (!token || !user) {
-        return {};
-      } else {
-        return {
-          headers: headers.append('Authorization', `${token}&${user.id}`)
-        };
-      }
+    const authMiddleware = new ApolloLink((operation, forward) => {
+
+      // add the authorization to the headers
+      // we assume `headers` as a defined instance of HttpHeaders
+      operation.setContext(({ headers }) => ({
+        headers: new HttpHeaders().set("Authorization", appendAuthHeader())
+      }));
+      //
+      return forward(operation);
     });
 
+    const appendAuthHeader = (): string => {
+
+      const token = sessionStorage.getItem('token');
+      const user: any = JSON.parse(sessionStorage.getItem('user'));
+
+      if (token && user) {
+        return `${token}&${user.id}`
+      }
+      else {
+        return null;
+      }
+
+    };
+
     apollo.create({
-      link: auth.concat(http),
+      link: from([authMiddleware, http]),
       cache: new InMemoryCache()
-    });    
+    });
   }
 
 }

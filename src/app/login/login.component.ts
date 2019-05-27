@@ -15,9 +15,9 @@ const login_mutation = gql`
         image,
         role,
         mobile,
-        teamId,
-        projectId,
-        companyId
+        teamid,
+        projectid,
+        companyid
       }
     }
   }
@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit {
 
   }
 
-  async handleLogin($event: Event) {
-
+  async handleLogin(email: string, password: string) {
+    
     // login mutation
     this.apollo.mutate({
       mutation: login_mutation,
 
       variables: {
-        email: "ridvan.ozaydin@siemens.com",
-        password: "password"
+        email: email,
+        password: password
       }
     }).subscribe(({ data }) => {
       const loginResponse = data.login;

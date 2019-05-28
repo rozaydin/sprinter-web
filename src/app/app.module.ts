@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
-import { setContext } from "apollo-link-context";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from "./routing.module";
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 //
 import { environment } from '../environments/environment';
 import { ApolloLink, from } from 'apollo-link';
+import { TeamComponent } from './team/team.component';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,13 @@ import { ApolloLink, from } from 'apollo-link';
     MainComponent,
     NavComponent,
     AccountComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    TeamComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ApolloModule,
@@ -47,26 +52,25 @@ export class AppModule {
 
       // add the authorization to the headers
       // we assume `headers` as a defined instance of HttpHeaders
-      operation.setContext(({ headers }) => ({
-        headers: new HttpHeaders().set("Authorization", appendAuthHeader())
+      operation.setContext((_) => ({
+        headers: setHeaders()
       }));
       //
       return forward(operation);
     });
 
-    const appendAuthHeader = (): string => {
+    const setHeaders = (): HttpHeaders => {
 
+      const headers =  new HttpHeaders();
       const token = sessionStorage.getItem('token');
-      const user: any = JSON.parse(sessionStorage.getItem('user'));
+      const user: any = JSON.parse(sessionStorage.getItem('user'));      
 
-      if (token && user) {
-        return `${token}&${user.id}`
-      }
-      else {
-        return null;
+      if (token && user) {                
+        return headers.set("Authorization", `${token}&${user.id}`);        
       }
 
-    };
+      return headers;
+    };    
 
     apollo.create({
       link: from([authMiddleware, http]),

@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  role: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.role = JSON.parse(sessionStorage.getItem("user")).role;
   }
 
 }

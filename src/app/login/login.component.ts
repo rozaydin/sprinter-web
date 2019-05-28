@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private apollo: Apollo) { }
 
   ngOnInit() {
-
   }
 
   async handleLogin(email: string, password: string) {
@@ -41,12 +40,13 @@ export class LoginComponent implements OnInit {
     // login mutation
     this.apollo.mutate({
       mutation: login_mutation,
-
       variables: {
         email: email,
         password: password
       }
     }).subscribe(({ data }) => {
+
+      console.log(data);
       const loginResponse = data.login;
       // store in session storage
       if (loginResponse.result == true) {

@@ -1,4 +1,6 @@
 <div>
   <button routerLink="/main/dashboard">Dashboard</button>
   <button routerLink="/main/account">Account</button>
+  <button *ngIf="role == 'PO' || role == 'ADMIN'" routerLink="/main/team">Team</button>
+  <button *ngIf="role == 'PO' || role == 'ADMIN'" routerLink="/main/members">Members</button>
 </div>

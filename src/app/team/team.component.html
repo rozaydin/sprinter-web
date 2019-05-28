@@ -1,0 +1,20 @@
+<div>
+
+  <div>
+      <label for="team_name">Name:</label>
+      <input #team_name id="team_name" name="team_name" type="text" [value]="name">
+  </div> 
+
+  <div>
+      <label for="team_sprint">Sprint:</label>
+      <input #team_sprint id="team_sprint" name="team_sprint" type="text" [value]="sprint">
+  </div>
+
+  <div>
+      <label for="team_goal">Goal:</label>
+      <input #team_goal id="team_goal" name="team_goal" type="text" [value]="goal">
+  </div>
+
+  <button (click)="updateTeam(team_name.value, team_sprint.value, team_goal.value)">Update</button>
+
+</div>

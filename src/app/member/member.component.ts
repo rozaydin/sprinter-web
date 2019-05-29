@@ -20,6 +20,12 @@ const member_query = gql`
   }
 `;
 
+const delete_user_mutation = gql`
+mutation deleteUser($id: ID!) {
+  deleteUser(id: $id)
+}
+`;
+
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
@@ -44,6 +50,23 @@ export class MemberComponent implements OnInit {
     }).subscribe(({ data }) => {
       this.members = (data as any).getUserWith;
     });
+  }
+
+  deleteUser(userId: string) {
+
+    this.apollo.mutate({
+      mutation: delete_user_mutation,
+      variables: {
+        id: userId
+      }
+    }).subscribe(({ data }) => {
+      const result = data.deleteUser;
+      alert("User Delete operation result: " + result);
+    });
+  }
+
+  updateUser(userId: string) {
+
   }
 
 }

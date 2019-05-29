@@ -44,9 +44,7 @@ export class LoginComponent implements OnInit {
         email: email,
         password: password
       }
-    }).subscribe(({ data }) => {
-
-      console.log(data);
+    }).subscribe(({ data }) => {      
       const loginResponse = data.login;
       // store in session storage
       if (loginResponse.result == true) {

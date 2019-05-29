@@ -6,6 +6,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum Role {
+  ADMIN = "ADMIN",
+  DEV = "DEV",
+  PO = "PO",
+}
+
 export interface TeamInput {
   name: string;
   sprint?: string | null;
@@ -14,21 +20,31 @@ export interface TeamInput {
   projectid: string;
 }
 
+export interface UserInput {
+  name: string;
+  email: string;
+  password?: string | null;
+  image?: string | null;
+  mobile?: string | null;
+  role?: Role | null;
+  teamid: string;
+  projectid: string;
+  companyid: string;
+}
+
+export interface User {  
+  id: string;
+  name: string;
+  email: string;
+  password: string | null;
+  image: string | null;
+  mobile: string | null;
+  role: string;
+  companyid: string;
+  teamid: string;
+  projectid: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
-
-
-
-export interface User {
-  id: string
-  name: string
-  email: string
-  password: string
-  image: string
-  mobile: string
-  role: string
-  teamid: string
-  projectid: string
-  companyid: string
-}

@@ -7,6 +7,7 @@ import { AccountComponent } from './account/account.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
+import { NewmemberComponent } from './newmember/newmember.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
             { path: 'account', component: AccountComponent },
             { path: 'changePassword', component: ChangepasswordComponent },
             { path: 'team', component: TeamComponent },
-            { path: 'members', component: MemberComponent }
+            { path: 'members', component: MemberComponent },
+            { path: 'newmember', component: NewmemberComponent }
         ]
     }
 ];

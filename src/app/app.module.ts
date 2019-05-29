@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { ApolloLink, from } from 'apollo-link';
 import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
+import { NewmemberComponent } from './newmember/newmember.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MemberComponent } from './member/member.component';
     AccountComponent,
     ChangepasswordComponent,
     TeamComponent,
-    MemberComponent
+    MemberComponent,
+    NewmemberComponent
   ],
   imports: [
     BrowserModule,

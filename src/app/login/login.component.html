@@ -1,15 +1,19 @@
-<div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
 
-    <!-- Username-->
-    <div>
-        <input #username type="text">        
+            <!-- Username-->
+            <div>
+                <input #username type="text">
+            </div>
+
+            <!-- Password -->
+            <div>
+                <input #password type="password">
+            </div>
+
+            <button (click)="handleLogin(username.value, password.value)" class="btn btn-primary">Login</button>
+
+        </div>
     </div>
-
-    <!-- Password -->
-    <div>
-        <input #password type="password">
-    </div>
-
-    <button (click)="handleLogin(username.value, password.value)">Login</button>
-  
 </div>

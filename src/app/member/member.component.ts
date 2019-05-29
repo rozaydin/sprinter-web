@@ -66,7 +66,7 @@ export class MemberComponent implements OnInit {
   }
 
   updateUser(userId: string) {
-
+    this.router.navigate(['/main/member', userId]);    
   }
 
 }

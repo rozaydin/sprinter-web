@@ -27,7 +27,8 @@
           <td>{{member.mobile}}</td>
           <td>
             <button id={{member.id}} #delete (click)="deleteUser(delete.id)">Delete</button>
-            <button id={{member.id}} #update (click)="updateUser(update.id)">Update</button>
+            <button id={{member.id}} #update [routerLink]="['/main/member', member.id]">Update</button>
+             <!-- (click)="updateUser(update.id) -->
           </td>
         </tr>
       </tbody>

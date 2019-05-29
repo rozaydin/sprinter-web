@@ -8,6 +8,7 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
 import { NewmemberComponent } from './newmember/newmember.component';
+import { UpdatememberComponent } from './updatemember/updatemember.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
             { path: 'changePassword', component: ChangepasswordComponent },
             { path: 'team', component: TeamComponent },
             { path: 'members', component: MemberComponent },
-            { path: 'newmember', component: NewmemberComponent }
+            { path: 'newmember', component: NewmemberComponent },
+            { path: 'member/:id', component: UpdatememberComponent },
         ]
     }
 ];

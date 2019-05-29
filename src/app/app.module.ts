@@ -20,6 +20,7 @@ import { ApolloLink, from } from 'apollo-link';
 import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
 import { NewmemberComponent } from './newmember/newmember.component';
+import { UpdatememberComponent } from './updatemember/updatemember.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NewmemberComponent } from './newmember/newmember.component';
     ChangepasswordComponent,
     TeamComponent,
     MemberComponent,
-    NewmemberComponent
+    NewmemberComponent,
+    UpdatememberComponent
   ],
   imports: [
     BrowserModule,

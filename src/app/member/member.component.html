@@ -4,34 +4,7 @@
     <button routerLink="/main/newmember">Add Member</button>
   </div>
 
+  <app-ctable [collection]="members" [deleteHandler]="deleteUser" [updateRoute]="'main/member'" [fields]="['id', 'name', 'email']">    
+  </app-ctable>
 
-  <div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Mobile</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let member of members; let i=index;">
-          <th scope="row">{{i}}</th>
-          <td>{{member.id}}</td>
-          <td>{{member.name}}</td>
-          <td>{{member.email}}</td>
-          <td>{{member.mobile}}</td>
-          <td>
-            <button id={{member.id}} #delete (click)="deleteUser(delete.id)">Delete</button>
-            <button id={{member.id}} #update [routerLink]="['/main/member', member.id]">Update</button>
-             <!-- (click)="updateUser(update.id) -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
+ </div>

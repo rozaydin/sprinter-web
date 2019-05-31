@@ -21,6 +21,7 @@ import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
 import { NewmemberComponent } from './newmember/newmember.component';
 import { UpdatememberComponent } from './updatemember/updatemember.component';
+import { CtableComponent } from './ctable/ctable.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UpdatememberComponent } from './updatemember/updatemember.component';
     TeamComponent,
     MemberComponent,
     NewmemberComponent,
-    UpdatememberComponent
+    UpdatememberComponent,
+    CtableComponent    
   ],
   imports: [
     BrowserModule,

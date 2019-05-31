@@ -20,7 +20,7 @@ const routes: Routes = [
             { path: 'account', component: AccountComponent },
             { path: 'changePassword', component: ChangepasswordComponent },
             { path: 'team', component: TeamComponent },
-            { path: 'members', component: MemberComponent },
+            { path: 'members', component: MemberComponent },            
             { path: 'newmember', component: NewmemberComponent },
             { path: 'member/:id', component: UpdatememberComponent },
         ]

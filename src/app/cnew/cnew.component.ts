@@ -14,6 +14,7 @@ export class CnewComponent implements OnInit {
 
   @Input("form") form: FormConf;// pass prototype or not initialized object here
   @Input("handler") handler: (object: object) => boolean;
+  @Input("state") state?:Map<string, object>;
 
   formFields: Array<string>;
   formGroup: FormGroup;

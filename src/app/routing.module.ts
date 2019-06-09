@@ -9,6 +9,7 @@ import { TeamComponent } from './team/team.component';
 import { MemberComponent } from './member/member.component';
 import { NewmemberComponent } from './newmember/newmember.component';
 import { UpdatememberComponent } from './updatemember/updatemember.component';
+import { Updatemember2Component } from './updatemember2/updatemember2.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
             { path: 'members', component: MemberComponent },            
             { path: 'newmember', component: NewmemberComponent },
             { path: 'member/:id', component: UpdatememberComponent },
+            { path: 'member2/:id', component: Updatemember2Component },
         ]
     }
 ];

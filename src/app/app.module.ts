@@ -23,6 +23,7 @@ import { NewmemberComponent } from './newmember/newmember.component';
 import { UpdatememberComponent } from './updatemember/updatemember.component';
 import { CtableComponent } from './ctable/ctable.component';
 import { CnewComponent } from './cnew/cnew.component';
+import { Updatemember2Component } from './updatemember2/updatemember2.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CnewComponent } from './cnew/cnew.component';
     UpdatememberComponent,
     CtableComponent,
     CnewComponent,
+    Updatemember2Component,
   ],
   imports: [
     BrowserModule,

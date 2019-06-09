@@ -1,0 +1,16 @@
+<div class="container-fluid">
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <form [formGroup]="formGroup" (ngSubmit)="formHandler($event)">
+
+      <div class="form-group" *ngFor="let property of formFields">
+        <label class="label label-lg" for="{{property}}">{{property | titlecase}}</label>
+        <input id="{{property}}" class="form-control" type="{{form[property].inputtype}}" formControlName="{{property}}">
+      </div>
+
+      <button type="submit" [disabled]="!formGroup.valid" class="btn btn-primary">Create</button>
+
+    </form>
+  </div>
+
+</div>

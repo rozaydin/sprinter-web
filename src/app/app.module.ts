@@ -4,7 +4,7 @@ import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from "./routing.module";
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { MemberComponent } from './member/member.component';
 import { NewmemberComponent } from './newmember/newmember.component';
 import { UpdatememberComponent } from './updatemember/updatemember.component';
 import { CtableComponent } from './ctable/ctable.component';
+import { CnewComponent } from './cnew/cnew.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +37,13 @@ import { CtableComponent } from './ctable/ctable.component';
     MemberComponent,
     NewmemberComponent,
     UpdatememberComponent,
-    CtableComponent    
+    CtableComponent,
+    CnewComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     ApolloModule,
